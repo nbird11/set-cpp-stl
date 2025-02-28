@@ -29,8 +29,6 @@ class TestSet;        // forward declaration for unit tests
 namespace custom
 {
 
-   //   class TestSet;
-
    /************************************************
     * SET
     * A class that represents a Set
@@ -150,7 +148,8 @@ namespace custom
    private:
 
       custom::BST<T> bst;
-   };
+
+   }; // class set
 
 
    /**************************************************
@@ -218,7 +217,8 @@ namespace custom
    private:
 
       typename custom::BST<T>::iterator it;
-   };
+
+   }; // class set::iterator
 
 
 
