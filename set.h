@@ -1,7 +1,7 @@
 /***********************************************************************
-* Header:
-*    Set
-* Summary:
+ * Header:
+ *    Set
+ * Summary:
  *      __      __     _______        __
  *     /  |    /  |   |  _____|   _  / /
  *     `| |    `| |   | |____    (_)/ /
@@ -10,11 +10,11 @@
  *    |_____| |_____|  \______.' /_/
  *
  *    This will contain the class definition of:
-*        set                 : A class that represents a Set
-*        set::iterator       : An iterator through Set
-* Author
-*    <your names here>
-************************************************************************/
+ *       set                 : A class that represents a Set
+ *       set::iterator       : An iterator through Set
+ * Author
+ *    Brock Hoskins, Nathan Bird
+ ************************************************************************/
 
 #pragma once
 
