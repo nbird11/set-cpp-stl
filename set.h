@@ -42,19 +42,25 @@ namespace custom
       // 
       // Construct
       //
-      set()
+      set() : bst(BST<T>())
       {}
-      set(const set& rhs)
+      set(const set& rhs) : bst(rhs.bst)
       {}
-      set(set&& rhs)
+      set(set&& rhs) : bst(std::move(rhs.bst))
       {}
-      set(const std::initializer_list<T>& il)
-      {}
+      set(const std::initializer_list<T>& il) : set()
+      {
+         insert(il);
+      }
       template <class Iterator>
-      set(Iterator first, Iterator last)
-      {}
+      set(Iterator first, Iterator last) : set()
+      {
+         insert(first, last); // TODO
+      }
       ~set()
-      {}
+      {
+         clear();
+      }
 
       //
       // Assign
@@ -80,11 +86,11 @@ namespace custom
       class iterator;
       iterator begin() const noexcept
       {
-         return iterator();
+         return bst.begin();
       }
       iterator end() const noexcept
       {
-         return iterator();
+         return iterator(nullptr);
       }
 
       //
@@ -92,7 +98,7 @@ namespace custom
       //
       iterator find(const T& t)
       {
-         return iterator();
+         return bst.find(t);
       }
 
       //
@@ -100,11 +106,11 @@ namespace custom
       //
       bool empty() const noexcept
       {
-         return true;
+         return bst.size() == 0;
       }
       size_t size() const noexcept
       {
-         return 99;
+         return bst.size();
       }
 
       //
@@ -112,26 +118,35 @@ namespace custom
       //
       std::pair<iterator, bool> insert(const T& t)
       {
-         std::pair<iterator, bool> p(iterator(), true);
-         return p;
+         return bst.insert(t, true /*keepUnique*/);
       }
       std::pair<iterator, bool> insert(T&& t)
       {
-         std::pair<iterator, bool> p(iterator(), true);
-         return p;
+         return bst.insert(std::move(t), true /*keepUnique*/);
       }
       void insert(const std::initializer_list<T>& il)
-      {}
+      {
+         for (const T& t : il)
+            insert(t);
+      }
       template <class Iterator>
       void insert(Iterator first, Iterator last)
-      {}
+      {
+         while (first != last)
+         {
+            insert(*first);
+            ++first;
+         }
+      }
 
 
       //
       // Remove
       //
       void clear() noexcept
-      {}
+      {
+         bst.clear();
+      }
       iterator erase(iterator& it)
       {
          return iterator();
