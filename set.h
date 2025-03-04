@@ -42,25 +42,23 @@ namespace custom
       // 
       // Construct
       //
-      set() : bst(BST<T>())
+      set()
       {}
       set(const set& rhs) : bst(rhs.bst)
       {}
       set(set&& rhs) : bst(std::move(rhs.bst))
       {}
-      set(const std::initializer_list<T>& il) : set()
+      set(const std::initializer_list<T>& il)
       {
          insert(il);
       }
       template <class Iterator>
-      set(Iterator first, Iterator last) : set()
+      set(Iterator first, Iterator last)
       {
          insert(first, last);
       }
       ~set()
-      {
-         clear();
-      }
+      {}
 
       //
       // Assign
@@ -92,11 +90,11 @@ namespace custom
       class iterator;
       iterator begin() const noexcept
       {
-         return bst.begin();
+         return set::iterator(bst.begin());
       }
       iterator end() const noexcept
       {
-         return iterator(nullptr);
+         return set::iterator(nullptr);
       }
 
       //
@@ -104,7 +102,7 @@ namespace custom
       //
       iterator find(const T& t)
       {
-         return bst.find(t);
+         return set::iterator(bst.find(t));
       }
 
       //
